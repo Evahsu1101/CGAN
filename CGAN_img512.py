@@ -89,8 +89,8 @@ transform = transforms.Compose([
 
 
 # 定義路徑
-root_folder = r"./分類" #資料集輸入
-output_folder = r"./測試生成" #模型測試時觀察生成情況路徑
+root_folder = r"./classification" #資料集輸入
+output_folder = r"./generation_test" #模型測試時觀察生成情況路徑
 model_save_dir = r"./model" #模型存檔路徑
 custom_dataset = CustomDataset(root_folder, transform=transform)
 
@@ -343,7 +343,7 @@ def generate_and_save_images(generator, category, num_images, latent_dim, output
 latent_dim = 200  
 
 #設置圖像輸出路徑資料夾
-output_dir = r"./生成4"
+output_dir = r"./generation4"
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
