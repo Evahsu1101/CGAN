@@ -302,7 +302,7 @@ generator_path = os.path.join(save_folder, 'CGAN T2 generator EPOCH5000.pth')
 torch.save(generator.state_dict(), generator_path)
 
 
-print(f"Generator model saved at {generator_path}")
+print("Generator model saved at {}".format(generator_path))
 
 
               
@@ -335,7 +335,8 @@ def generate_and_save_images(generator, category, num_images, latent_dim, output
         generated_images = generator(noise, labels).detach().cpu()
     # 保存圖片
     for i, img in enumerate(generated_images):
-        save_image(img, os.path.join(output_dir, f'category_{category}_image_{i}.png'))
+        save_image(img, os.path.join(output_dir, 'category_{}_image_{}.png'.format(category, i)))
+
 
 
 latent_dim = 200  
