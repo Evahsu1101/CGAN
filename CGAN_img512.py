@@ -269,8 +269,7 @@ for epoch in range(epochs):
         discriminator_losses.append(loss_D.item())
         # 每個EPOCH計算準確率
        # 每个epoch的信息输出
-        print(f'Epoch [{epoch+1}/{epochs}], Step [{epoch+1}/{len(data_loader)}], '
-                  f'Loss D: {loss_D.item():.4f}, Loss G: {loss_G.item():.4f}')
+        print('Epoch [{}/{}], Step [{}/{}]'.format(epoch+1, epochs, epoch+1, len(data_loader)))
 
 
         # 保存生成器的生成的圖像和標籤
@@ -278,17 +277,16 @@ for epoch in range(epochs):
             with torch.no_grad():
              # 將生成的圖像和標籤丟入變量中
                samples_with_labels = [{'image': fake_images[i], 'label': conditions[i].cpu().numpy()} for i in range(batch_size)]
-               save_image(fake_images.data[:1], f"{output_folder}/Test2epoch_{epoch}.png", nrow=1, normalize=True)
+               save_image(fake_images.data[:1], "{}/Test2epoch_{}.png".format(output_folder, epoch), nrow=1, normalize=True)
                
- # 每1000个Epoch保存一次模型
+        # 每1000个Epoch保存一次模型
         if (epoch + 1) % 1000 == 0:
-            generator_save_path = os.path.join(model_save_dir, f'CGAN C T2 generator_epoch_{epoch+1}.pth')
+            generator_save_path = os.path.join(model_save_dir, 'CGAN C T2 generator_epoch_{}.pth'.format(epoch + 1))
 
-        
             torch.save(generator.state_dict(), generator_save_path)
-
             
-            print(f"Models saved at epoch {epoch+1}")
+            print("Models saved at epoch {}".format(epoch + 1))
+
 
 
 
