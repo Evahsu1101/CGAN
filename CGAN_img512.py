@@ -95,7 +95,7 @@ model_save_dir = r"./model" #模型存檔路徑
 custom_dataset = CustomDataset(root_folder, transform=transform)
 
 # dataloader
-batch_size = 43 # 258/n 最好是整除比較不會出問題
+batch_size = 258 # 258/n 最好是整除比較不會出問題
 data_loader = DataLoader(custom_dataset, batch_size=batch_size, shuffle=True)
 
 
